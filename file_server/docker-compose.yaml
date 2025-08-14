@@ -1,0 +1,5 @@
+services:
+    file-server:
+        build: .
+        ports:
+            - "30000:80"

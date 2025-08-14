@@ -1,0 +1,17 @@
+{
+    "name": "problems",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "graph": "ts-node src/graph.ts",
+        "time": "ts-node src/time.ts",
+        "all": "npm run graph && npm run time && echo 'All tests passed!'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "ts-node": "^10.9.2"
+    }
+}
