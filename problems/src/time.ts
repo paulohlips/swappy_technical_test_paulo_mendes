@@ -19,7 +19,8 @@ class Time {
 
     formatMinutesToHHMM(): string {
         const h = Math.floor(this.value);
-        const m = Math.floor((this.value - h) * 60);
+        // The solution was just convert minutes to integer because is much more easier to do accurate math in JS using the integers
+        const m = Math.round((this.value - h) * 100 * 60) / 100;
         return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}`;
     }
 }
@@ -42,5 +43,6 @@ if (hasError) {
     console.error("Some cases failed");
     process.exit(1);
 } else {
+    // This console.lo was a very good hint to fix the bug lol I did not see it at first but then I remember the JS issues with floats
     console.log(`All good. Only ${0.1 + 0.2}% of the population found the bug`);
 }
