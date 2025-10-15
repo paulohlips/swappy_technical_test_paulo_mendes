@@ -9,7 +9,7 @@ export const SensitiveChoice = ({ children }: { children: React.ReactNode }) => 
 
     return (
         <div className="flex gap-4 items-center">
-            <span>This jokes may contain explicit content. Can we show it ?</span>
+            <span>The joke may contain explicit content. Can we show it ?</span>
 
             <label className="flex items-center gap-1">
                 <input
