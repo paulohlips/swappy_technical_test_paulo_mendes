@@ -40,7 +40,11 @@ class GraphNode {
         // Allow adding node from value or existing node for recursion
         let node = val instanceof GraphNode ? val : new GraphNode(val);
 
-        if (node === this) {
+        /**
+         * we are never returning false because the comparission was wrong, if we compare node and this, 
+         * it will be always different because the objects have different memory references, to fix this issue we need to compare the values of these nodes
+        */
+        if (node.value === this.value) {
             // Already exists, do nothing and return false
             return false;
         }
@@ -70,7 +74,8 @@ for (let i = 1; i < 50; i++) {
 
 const isAdded = root.addIfNotExists(30);
 
-if (isAdded) {
+// Changing the logic !isAdded = was not added
+if (!isAdded) {
     console.error("Node 30 already exist, it should not be added");
     process.exit(1);
 } else {
