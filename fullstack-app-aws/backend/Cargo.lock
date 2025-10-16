@@ -566,12 +566,13 @@ name = "jokes-api"
 version = "0.1.0"
 dependencies = [
  "axum",
- "hyper",
  "reqwest",
  "serde",
+ "serde_derive",
  "serde_json",
  "tokio",
  "tower",
+ "tower-http",
 ]
 
 [[package]]
