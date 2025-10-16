@@ -26,12 +26,12 @@ jobs:
         run: cargo install cargo-lambda
 
       - name: Build Rust Lambda
-        working-directory: backend
+        working-directory: fullstack-app-aws/backend
         run: cargo lambda build --release --arm64
 
       - name: Package Lambda
-        working-directory: backend
-        run: zip -j ../lambda.zip target/lambda/jokes-api/bootstrap
+        working-directory: fullstack-app-aws/backend
+        run: zip -j ../../lambda.zip target/lambda/jokes-api/bootstrap
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -49,13 +49,13 @@ jobs:
         run: terraform apply -auto-approve
 
       - name: Build Frontend
-        working-directory: frontend
+        working-directory: fullstack-app-aws/frontend
         run: |
           npm install
           npm run build
 
       - name: Deploy Frontend to S3
-        working-directory: frontend
+        working-directory: fullstack-app-aws/frontend
         run: |
           aws s3 sync build/ s3://my-frontend-bucket --delete
           aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
